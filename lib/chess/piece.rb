@@ -32,7 +32,7 @@ module Chess
 
     def value
       raise unless Value::VALUES.key?(@type)
-      Value::VALUES[@type]
+      @team == Team::WHITE ? Value::VALUES[@type] : -Value::VALUES[@type]
     end
   end
 end
