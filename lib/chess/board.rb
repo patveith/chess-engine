@@ -5,13 +5,13 @@ module Chess
       @board = Array.new(8).map { Array.new(8) }
     end
 
-    def score(team:)
+    def score
       score = 0
       @board.each do |row|
         row.each do |square|
           next if square.nil?
 
-          score += square.value(team)
+          score += square.value
         end
       end
 
