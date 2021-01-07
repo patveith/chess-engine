@@ -1,7 +1,5 @@
 module Chess
   class Board
-    WHITE = "White".freeze
-    BLACK = "Black".freeze
 
     def initialize
       @board = Array.new(8).map { Array.new(8) }
@@ -12,6 +10,8 @@ module Chess
       @board.each do |row|
         row.each do |square|
           next if square.nil?
+
+          score += square.value(team)
         end
       end
 
