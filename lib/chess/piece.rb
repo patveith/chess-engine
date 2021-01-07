@@ -1,5 +1,7 @@
 module Chess
   class Piece
+    attr_reader :team, :type
+
     module Team
       WHITE = "White".freeze
       BLACK = "Black".freeze
@@ -21,13 +23,17 @@ module Chess
         Type::BISHOP => 3,
         Type::ROOK => 5,
         Type::QUEEN => 9,
-        Type::KING => nil
+        Type::KING => 0
       }.freeze
     end
 
     def initialize(team:, type:)
       @team = team
       @type = type
+    end
+
+    def ==(other_object)
+      @team == other_object.team && @type == other_object.type
     end
 
     def value
