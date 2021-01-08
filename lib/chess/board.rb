@@ -13,7 +13,9 @@ module Chess
       Chess::Piece::Type::ROOK
     ].freeze
 
-    FILE_ASCII_CHAR_OFFSET = 97.freeze
+    CHAR_A_ASCII = 97.freeze
+    CHAR_H_ASCII = 104.freeze
+    FILE_ASCII_CHAR_OFFSET = CHAR_A_ASCII
 
     def initialize(board_matrix: nil)
       @board_matrix = board_matrix || Array.new(8).map { Array.new(8) }
