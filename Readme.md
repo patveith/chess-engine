@@ -11,8 +11,10 @@
 * ~~Piece type~~
 * ~~Team~~
 * Valid moves(current_board)
+  * ~~basic moves (pieces make valid moves and stay on the board)~~
+  * take collisions in to account when moving
+  * advanced movement (castling, en passant, promotions)
 * Checked/Checkmated
-* Can I castle?
 * ~~Value~~
 * ~~Position on board~~
   * ~~File (Letters) - First Coordinate~~

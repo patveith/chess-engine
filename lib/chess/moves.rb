@@ -1,9 +1,9 @@
 module Chess
   module LateralMoves
-    def lateral_moves
+    def lateral_moves(max_distance = 7)
       moves = []
 
-      8.times do |i|
+      (1..max_distance).each do |i|
         moves.append([@file, i + 1])
         moves.append([(Chess::Board::CHAR_A_ASCII + i).chr, @rank])
       end
@@ -13,10 +13,10 @@ module Chess
   end
 
   module DiagonalMoves
-    def diagonal_moves
+    def diagonal_moves(max_distance = 8)
       moves = []
 
-      8.times do |i|
+      max_distance.times do |i|
         if Chess::Board.on_board?(@file.ord + i + 1, @rank + i + 1)
           moves.append([(@file.ord + i + 1).chr, @rank + i + 1])
         end
