@@ -14,11 +14,8 @@ module Chess
         [(ascii_file_number - 2).chr, rank - 1]
       ]
 
-      moves.reject do |file, rank|
-        file.ord < Chess::Board::CHAR_A_ASCII ||
-          file.ord > Chess::Board::CHAR_H_ASCII ||
-          rank < 1 ||
-          rank > 8
+      moves.select do |file, rank|
+        Chess::Board.on_board?(file, rank)
       end
     end
   end

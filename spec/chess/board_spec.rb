@@ -1,6 +1,32 @@
 require "spec_helper"
 
 RSpec.describe Chess::Board do
+  describe ".on_board?" do
+    context "when rank and file are on the board" do
+      it "returns true" do
+        expect(described_class.on_board?("c", 5)).to eq(true)
+      end
+    end
+
+    context "when rank and file both not on the board" do
+      it "returns false" do
+        expect(described_class.on_board?("i", 9)).to eq(false)
+      end
+    end
+
+    context "when rank is on the board and file is not" do
+      it "returns false" do
+        expect(described_class.on_board?("i", 5)).to eq(false)
+      end
+    end
+
+    context "when file is on the board and rank is not" do
+      it "returns false" do
+        expect(described_class.on_board?("c", 9)).to eq(false)
+      end
+    end
+  end
+
   describe "#new" do
     subject { described_class.new }
 

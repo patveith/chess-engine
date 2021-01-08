@@ -17,6 +17,10 @@ module Chess
     CHAR_H_ASCII = 104.freeze
     FILE_ASCII_CHAR_OFFSET = CHAR_A_ASCII
 
+    def self.on_board?(file, rank)
+      (1..8).include?(rank) && (CHAR_A_ASCII..CHAR_H_ASCII).include?(file.ord)
+    end
+
     def initialize(board_matrix: nil)
       @board_matrix = board_matrix || Array.new(8).map { Array.new(8) }
       return if board_matrix
