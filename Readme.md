@@ -8,23 +8,24 @@
 
 ### Pieces
 
-* Piece type
-* Team
+* ~~Piece type~~
+* ~~Team~~
 * Valid moves(current_board)
 * Checked/Checkmated
 * Can I castle?
-* Value
-* Position on board
-  * File (Letters) - First Coordinate
-  * Rank (Numbers) - Second Coordinate
+* ~~Value~~
+* ~~Position on board~~
+  * ~~File (Letters) - First Coordinate~~
+  * ~~Rank (Numbers) - Second Coordinate~~
 
 ### Board
 
-* All the pieces on the board
-* Set itself up (heres a new game)
-  * from new game
-  * from vector of moves
-* How many of each piece are left - Score balance
+* ~~All the pieces on the board~~
+* ~~Set itself up (heres a new game)~~
+  * ~~from new game~~
+  * ~~from an established board matrix~~
+  * from an input vector of moves
+* ~~How many of each piece are left - Score balance~~
 
 ### Players
 

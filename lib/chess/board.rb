@@ -13,21 +13,44 @@ module Chess
       Chess::Piece::Type::ROOK
     ].freeze
 
+    FILE_ASCII_CHAR_OFFSET = 97.freeze
+
     def initialize(board_matrix: nil)
       @board_matrix = board_matrix || Array.new(8).map { Array.new(8) }
       return if board_matrix
 
-      @board_matrix.each_with_index do |row, rank|
-        row.each_with_index do |square, file|
+      @board_matrix.each_with_index do |row, y|
+        row.each_with_index do |square, x|
+          file, rank = matrix_translation(x, y)
           case rank
-          when 0
-            @board_matrix[rank][file] = Chess::Piece.new(:team => Chess::Piece::Team::WHITE, :type => WHITE_BACK_ROW_ORDER[file])
           when 1
-            @board_matrix[rank][file] = Chess::Piece.new(:team => Chess::Piece::Team::WHITE, :type => Chess::Piece::Type::PAWN)
-          when 6
-            @board_matrix[rank][file] = Chess::Piece.new(:team => Chess::Piece::Team::BLACK, :type => Chess::Piece::Type::PAWN)
+            @board_matrix[y][x] = Chess::Piece.new(
+              :team => Chess::Piece::Team::WHITE,
+              :type => WHITE_BACK_ROW_ORDER[x],
+              :file => file,
+              :rank => rank
+            )
+          when 2
+            @board_matrix[y][x] = Chess::Piece.new(
+              :team => Chess::Piece::Team::WHITE,
+              :type => Chess::Piece::Type::PAWN,
+              :file => file,
+              :rank => rank
+            )
           when 7
-            @board_matrix[rank][file] = Chess::Piece.new(:team => Chess::Piece::Team::BLACK, :type => WHITE_BACK_ROW_ORDER.reverse[file])
+            @board_matrix[y][x] = Chess::Piece.new(
+              :team => Chess::Piece::Team::BLACK,
+              :type => Chess::Piece::Type::PAWN,
+              :file => file,
+              :rank => rank
+            )
+          when 8
+            @board_matrix[y][x] = Chess::Piece.new(
+              :team => Chess::Piece::Team::BLACK,
+              :type => WHITE_BACK_ROW_ORDER.reverse[x],
+              :file => file,
+              :rank => rank
+            )
           end
         end
       end
@@ -44,6 +67,15 @@ module Chess
       end
 
       score
+    end
+
+    private
+
+    def matrix_translation(x, y)
+      rank = y + 1
+      file = (x + FILE_ASCII_CHAR_OFFSET).chr
+
+      [file, rank]
     end
   end
 end

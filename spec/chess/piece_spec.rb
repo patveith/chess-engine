@@ -5,15 +5,19 @@ RSpec.describe Chess::Piece do
     subject do
       described_class.new(
         :team => described_class::Team::WHITE,
-        :type => described_class::Type::PAWN
+        :type => described_class::Type::PAWN,
+        :file => "a",
+        :rank => 2
       )
     end
 
-    context "when team and type are equal" do
+    context "when team, type, rank, and file are equal" do
       let(:other_object) do
         described_class.new(
           :team => described_class::Team::WHITE,
-          :type => described_class::Type::PAWN
+          :type => described_class::Type::PAWN,
+          :file => "a",
+          :rank => 2
         )
       end
 
@@ -26,7 +30,9 @@ RSpec.describe Chess::Piece do
       let(:other_object) do
         described_class.new(
           :team => described_class::Team::BLACK,
-          :type => described_class::Type::PAWN
+          :type => described_class::Type::PAWN,
+          :file => "a",
+          :rank => 7
         )
       end
 
@@ -41,7 +47,9 @@ RSpec.describe Chess::Piece do
       subject do
         described_class.new(
           :team => described_class::Team::WHITE,
-          :type => described_class::Type::PAWN
+          :type => described_class::Type::PAWN,
+          :file => "a",
+          :rank => 2
         )
       end
 
@@ -55,7 +63,9 @@ RSpec.describe Chess::Piece do
       subject do
         described_class.new(
           :team => described_class::Team::BLACK,
-          :type => described_class::Type::PAWN
+          :type => described_class::Type::PAWN,
+          :file => "a",
+          :rank => 7
         )
       end
 
@@ -68,7 +78,9 @@ RSpec.describe Chess::Piece do
       subject do
         described_class.new(
           :team => described_class::Team::WHITE,
-          :type => "Dog"
+          :type => "Dog",
+          :file => "a",
+          :rank => 2
         )
       end
 

@@ -1,6 +1,6 @@
 module Chess
   class Piece
-    attr_reader :team, :type
+    attr_reader :team, :type, :rank, :file
 
     module Team
       WHITE = "White".freeze
@@ -27,13 +27,18 @@ module Chess
       }.freeze
     end
 
-    def initialize(team:, type:)
+    def initialize(team:, type:, rank:, file:)
       @team = team
       @type = type
+      @rank = rank
+      @file = file
     end
 
     def ==(other_object)
-      @team == other_object.team && @type == other_object.type
+      @team == other_object.team &&
+        @type == other_object.type &&
+        @rank == other_object.rank &&
+        @file == other_object.file
     end
 
     def value
