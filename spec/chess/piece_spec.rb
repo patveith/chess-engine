@@ -85,8 +85,42 @@ RSpec.describe Chess::Piece do
       end
 
       it "raise an error" do
-        expect{ subject.value }.to raise_error
+        expect { subject.value }.to raise_error
       end
+    end
+  end
+
+  describe "#move_to" do
+    subject do
+      described_class.new(
+        :team => described_class::Team::WHITE,
+        :type => described_class::Type::PAWN,
+        :file => "a",
+        :rank => 2
+      )
+    end
+
+    context "when a piece is unmoved" do
+      it "updates moved" do
+        expect { subject.move_to(:file => "a", :rank => 3) }.to change { subject.moved }.from(false).to(true)
+      end
+    end
+
+    context "when a piece has already moved" do
+      before { subject.move_to(:file => "a", :rank => 3) }
+
+      it "does not update moved" do
+        expect(subject.moved).to eq(true)
+        expect { subject.move_to(:file => "a", :rank => 4) }.not_to change { subject.moved }
+      end
+    end
+
+    it "updates rank" do
+      expect { subject.move_to(:file => "b", :rank => 3) }.to change { subject.rank }.from(2).to(3)
+    end
+
+    it "updates file" do
+      expect { subject.move_to(:file => "b", :rank => 3) }.to change { subject.file }.from("a").to("b")
     end
   end
 end
