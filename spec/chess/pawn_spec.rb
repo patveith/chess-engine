@@ -4,7 +4,7 @@ RSpec.describe Chess::Pawn do
   describe "#available_moves" do
     let(:board) { Chess::Board.new }
 
-    context "when a pawn has not yet moved" do
+    context "when a white pawn has not yet moved" do
       subject do
         described_class.new(
           :team => described_class::Team::WHITE,
@@ -32,7 +32,7 @@ RSpec.describe Chess::Pawn do
       end
     end
 
-    context "when a pawn has moved" do
+    context "when a white pawn has moved" do
       subject do
         described_class.new(
           :team => described_class::Team::WHITE,
@@ -53,6 +53,59 @@ RSpec.describe Chess::Pawn do
 
       it "returns one move" do
         subject.move_to(:file => "a", :rank => 3)
+        expect(subject.available_moves(board)).to match_array(available_moves)
+      end
+    end
+
+    context "when a black pawn has not yet moved" do
+      subject do
+        described_class.new(
+          :team => described_class::Team::BLACK,
+          :type => described_class::Type::PAWN,
+          :file => "a",
+          :rank => 7
+        )
+      end
+
+      let(:available_moves) do
+        [
+          {
+            :file => "a",
+            :rank => 6
+          },
+          {
+            :file => "a",
+            :rank => 5
+          }
+        ]
+      end
+
+      it "returns two possible moves" do
+        expect(subject.available_moves(board)).to match_array(available_moves)
+      end
+    end
+
+    context "when a black pawn has moved" do
+      subject do
+        described_class.new(
+          :team => described_class::Team::BLACK,
+          :type => described_class::Type::PAWN,
+          :file => "a",
+          :rank => 7
+        )
+      end
+
+      let(:available_moves) do
+        [
+          {
+            :file => "a",
+            :rank => 5
+          }
+        ]
+      end
+
+      it "returns one move" do
+        subject.move_to(:file => "a", :rank => 6)
         expect(subject.available_moves(board)).to match_array(available_moves)
       end
     end

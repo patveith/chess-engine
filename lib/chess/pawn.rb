@@ -1,38 +1,36 @@
 module Chess
   class Pawn < Piece
     def available_moves(board)
-      if board.piece_at_square(:file => @file, :rank => @rank + 1)
+      direction = @team == Chess::Piece::Team::WHITE ? 1 : -1
+
+      if board.piece_at_square(:file => @file, :rank => @rank + direction)
         return []
-      elsif board.piece_at_square(:file => @file, :rank => @rank + 2)
+      elsif board.piece_at_square(:file => @file, :rank => @rank + 2 * direction)
         return [
           {
             :file => @file,
-            :rank => @rank + 1
+            :rank => @rank + direction
           }
         ]
       elsif !@moved
         return [
           {
             :file => @file,
-            :rank => @rank + 2
+            :rank => @rank + 2 * direction
           },
           {
             :file => @file,
-            :rank => @rank + 1
+            :rank => @rank + direction
           }
         ]
       else
         [
           {
             :file => @file,
-            :rank => @rank + 1
+            :rank => @rank + direction
           }
         ]
       end
     end
   end
 end
-
-
-# check for a piece in @rank + 1, or @rank + 2 if unmoved (current file)
-# check for rank + 1 and file + 1 (or -1) and opposite color
