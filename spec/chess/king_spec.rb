@@ -11,13 +11,22 @@ RSpec.describe Chess::King do
       )
     end
 
-    let(:available_moves) {
+    let(:available_moves) do
       [
-        ["a", 2],
-        ["b", 2],
-        ["b", 1]
+        {
+          :file => "a",
+          :rank => 2
+        },
+        {
+          :file => "b",
+          :rank => 2
+        },
+        {
+          :file => "b",
+          :rank => 1
+        }
       ]
-    }
+    end
 
     it "returns 3 possible moves" do
       expect(subject.available_moves).to match_array(available_moves)
