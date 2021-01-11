@@ -27,7 +27,7 @@ module Chess
 
       @board_matrix.each_with_index do |row, y|
         row.each_with_index do |square, x|
-          file, rank = matrix_translation(x, y)
+          file, rank = coordinates_to_rank_and_file(x, y)
           case rank
           when 1
             @board_matrix[y][x] = Chess::Piece.new(
@@ -62,6 +62,11 @@ module Chess
       end
     end
 
+    def piece_at_square(file:, rank:)
+      x, y = rank_and_file_to_coordinates(:file => file, :rank => rank)
+      @board_matrix[y][x]
+    end
+
     def score
       score = 0
       @board_matrix.each do |row|
@@ -77,11 +82,18 @@ module Chess
 
     private
 
-    def matrix_translation(x, y)
+    def coordinates_to_rank_and_file(x, y)
       rank = y + 1
       file = (x + FILE_ASCII_CHAR_OFFSET).chr
 
       [file, rank]
+    end
+
+    def rank_and_file_to_coordinates(file:, rank:)
+      y = rank - 1
+      x = file.ord - FILE_ASCII_CHAR_OFFSET
+
+      [x, y]
     end
   end
 end
