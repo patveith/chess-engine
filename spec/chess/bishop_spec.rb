@@ -11,17 +11,38 @@ RSpec.describe Chess::Bishop do
       )
     end
 
-    let(:available_moves) {
+    let(:available_moves) do
       [
-        ["b", 2],
-        ["c", 3],
-        ["d", 4],
-        ["e", 5],
-        ["f", 6],
-        ["g", 7],
-        ["h", 8]
+        {
+          :file => "b",
+          :rank => 2
+        },
+        {
+          :file => "c",
+          :rank => 3
+        },
+        {
+          :file => "d",
+          :rank => 4
+        },
+        {
+          :file => "e",
+          :rank => 5
+        },
+        {
+          :file => "f",
+          :rank => 6
+        },
+        {
+          :file => "g",
+          :rank => 7
+        },
+        {
+          :file => "h",
+          :rank => 8
+        }
       ]
-    }
+    end
 
     it "returns 7 possible moves" do
       expect(subject.available_moves).to match_array(available_moves)

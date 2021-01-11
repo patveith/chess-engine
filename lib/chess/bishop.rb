@@ -3,8 +3,8 @@ module Chess
     include DiagonalMoves
 
     def available_moves
-      diagonal_moves.reject do |file, rank|
-        rank == @rank && file == @file
+      diagonal_moves.reject do |move|
+        move[:rank] == @rank && move[:file] == @file
       end
     end
   end

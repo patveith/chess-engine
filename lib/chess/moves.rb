@@ -28,19 +28,39 @@ module Chess
 
       max_distance.times do |i|
         if Chess::Board.on_board?(@file.ord + i + 1, @rank + i + 1)
-          moves.append([(@file.ord + i + 1).chr, @rank + i + 1])
+          moves.append(
+              {
+                :file => (@file.ord + i + 1).chr,
+                :rank => @rank + i + 1
+              }
+            )
         end
 
         if Chess::Board.on_board?(@file.ord + i + 1, @rank - (i + 1))
-          moves.append([(@file.ord + i + 1).chr, @rank - (i + 1)])
+          moves.append(
+            {
+              :file => (@file.ord + i + 1).chr,
+              :rank => @rank - (i + 1)
+            }
+          )
         end
 
         if Chess::Board.on_board?(@file.ord - (i + 1), @rank - (i + 1))
-          moves.append([(@file.ord - (i + 1)).chr, @rank - (i + 1)])
+          moves.append(
+            {
+              :file => (@file.ord - (i + 1)).chr,
+              :rank => @rank - (i + 1)
+            }
+          )
         end
 
         if Chess::Board.on_board?(@file.ord - (i + 1), @rank + i + 1)
-          moves.append([(@file.ord - (i + 1)).chr, @rank + i + 1])
+          moves.append(
+            {
+              :file => (@file.ord - (i + 1)).chr,
+              :rank => @rank + i + 1
+            }
+          )
         end
       end
 
