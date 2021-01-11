@@ -123,4 +123,33 @@ RSpec.describe Chess::Piece do
       expect { subject.move_to(:file => "b", :rank => 3) }.to change { subject.file }.from("a").to("b")
     end
   end
+
+  describe "#file_shift" do
+    subject do
+      described_class.new(
+        :team => described_class::Team::WHITE,
+        :type => described_class::Type::PAWN,
+        :file => "b",
+        :rank => 2
+      )
+    end
+
+    context "when shifting positively" do
+      it "returns the next letter file alphabetically" do
+        expect(subject.file_shift(1)).to eq("c")
+      end
+    end
+
+    context "when shifting negatively" do
+      it "returns the next letter file alphabetically" do
+        expect(subject.file_shift(-1)).to eq("a")
+      end
+    end
+
+    context "when shifting off board" do
+      it "raises an error" do
+        expect { subject.file_shift(-2) }.to raise_error
+      end
+    end
+  end
 end

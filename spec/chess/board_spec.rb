@@ -209,4 +209,23 @@ RSpec.describe Chess::Board do
       end
     end
   end
+
+  describe "#piece_at_square" do
+    subject { described_class.new }
+
+    context "when asking for a piece at a location on a board" do
+      let(:king) do
+        Chess::Piece.new(:team => Chess::Piece::Team::WHITE,
+          :type => Chess::Piece::Type::KING,
+          :file => "e",
+          :rank => 1
+        )
+      end
+
+      it "returns that piece object" do
+        expect(subject.piece_at_square(:file => "e", :rank => 1)).to eq(king)
+      end
+    end
+
+  end
 end
