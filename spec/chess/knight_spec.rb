@@ -14,14 +14,38 @@ RSpec.describe Chess::Knight do
 
       let(:available_moves) do
         [
-          ["c", 2],
-          ["b", 3],
-          ["b", 5],
-          ["c", 6],
-          ["e", 6],
-          ["f", 5],
-          ["f", 3],
-          ["e", 2]
+          {
+            :file => "c",
+            :rank => 2
+          },
+          {
+            :file => "b",
+            :rank => 3
+          },
+          {
+            :file => "b",
+            :rank => 5
+          },
+          {
+            :file => "c",
+            :rank => 6
+          },
+          {
+            :file => "e",
+            :rank => 6
+          },
+          {
+            :file => "f",
+            :rank => 5
+          },
+          {
+            :file => "f",
+            :rank => 3
+          },
+          {
+            :file => "e",
+            :rank => 2
+          }
         ]
       end
 
@@ -43,10 +67,22 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["b", 1],
-            ["c", 2],
-            ["c", 4],
-            ["b", 5]
+            {
+              :file => "b",
+              :rank => 1
+            },
+            {
+              :file => "c",
+              :rank => 2
+            },
+            {
+              :file => "c",
+              :rank => 4
+            },
+            {
+              :file => "b",
+              :rank => 5
+            }
           ]
         end
 
@@ -67,12 +103,30 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["a", 1],
-            ["a", 5],
-            ["c", 1],
-            ["c", 5],
-            ["d", 2],
-            ["d", 4]
+            {
+              :file => "a",
+              :rank => 1
+            },
+            {
+              :file => "a",
+              :rank => 5
+            },
+            {
+              :file => "c",
+              :rank => 1
+            },
+            {
+              :file => "c",
+              :rank => 5
+            },
+            {
+              :file => "d",
+              :rank => 2
+            },
+            {
+              :file => "d",
+              :rank => 4
+            }
           ]
         end
 
@@ -93,12 +147,30 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["h", 1],
-            ["f", 1],
-            ["e", 2],
-            ["e", 4],
-            ["f", 5],
-            ["h", 5]
+            {
+              :file => "h",
+              :rank => 1
+            },
+            {
+              :file => "f",
+              :rank => 1
+            },
+            {
+              :file => "e",
+              :rank => 2
+            },
+            {
+              :file => "e",
+              :rank => 4
+            },
+            {
+              :file => "f",
+              :rank => 5
+            },
+            {
+              :file => "h",
+              :rank => 5
+            }
           ]
         end
 
@@ -119,10 +191,22 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["g", 1],
-            ["f", 2],
-            ["f", 4],
-            ["g", 5]
+            {
+              :file => "g",
+              :rank => 1
+            },
+            {
+              :file => "f",
+              :rank => 2
+            },
+            {
+              :file => "f",
+              :rank => 4
+            },
+            {
+              :file => "g",
+              :rank => 5
+            }
           ]
         end
 
@@ -143,8 +227,14 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["g", 3],
-            ["f", 2]
+            {
+              :file => "g",
+              :rank => 3
+            },
+            {
+              :file => "f",
+              :rank => 2
+            }
           ]
         end
 
@@ -165,12 +255,30 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["h", 1],
-            ["f", 1],
-            ["e", 2],
-            ["e", 4],
-            ["f", 5],
-            ["h", 5]
+            {
+              :file => "h",
+              :rank => 1
+            },
+            {
+              :file => "f",
+              :rank => 1
+            },
+            {
+              :file => "e",
+              :rank => 2
+            },
+            {
+              :file => "e",
+              :rank => 4
+            },
+            {
+              :file => "f",
+              :rank => 5
+            },
+            {
+              :file => "h",
+              :rank => 5
+            }
           ]
         end
 
@@ -191,9 +299,18 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["f", 8],
-            ["f", 6],
-            ["g", 5]
+            {
+              :file => "f",
+              :rank => 8
+            },
+            {
+              :file => "f",
+              :rank => 6
+            },
+            {
+              :file => "g",
+              :rank => 5
+            }
           ]
         end
 
@@ -214,8 +331,14 @@ RSpec.describe Chess::Knight do
 
         let(:available_moves) do
           [
-            ["f", 7],
-            ["g", 6]
+            {
+              :file => "f",
+              :rank => 7
+            },
+            {
+              :file => "g",
+              :rank => 6
+            }
           ]
         end
 
