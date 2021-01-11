@@ -1,46 +1,63 @@
 module Chess
   class Knight < Piece
-    def available_moves
-      ascii_file_number = file.ord
+    def available_moves(board)
+      moves = []
 
-      moves = [
+      l_movements = [
         {
-          :file => (ascii_file_number + 1).chr,
-          :rank => @rank + 2
+          :file_shift => 1,
+          :rank_shift => 2
         },
         {
-          :file => (ascii_file_number - 1).chr,
-          :rank => @rank + 2
+          :file_shift => -1,
+          :rank_shift => 2
         },
         {
-          :file => (ascii_file_number + 1).chr,
-          :rank => @rank - 2
+          :file_shift => 1,
+          :rank_shift => -2
         },
         {
-          :file => (ascii_file_number - 1).chr,
-          :rank => @rank - 2
+          :file_shift => -1,
+          :rank_shift => -2
         },
         {
-          :file => (ascii_file_number + 2).chr,
-          :rank => @rank + 1
+          :file_shift => 2,
+          :rank_shift => 1
         },
         {
-          :file => (ascii_file_number - 2).chr,
-          :rank => @rank + 1
+          :file_shift => -2,
+          :rank_shift => 1
         },
         {
-          :file => (ascii_file_number + 2).chr,
-          :rank => @rank - 1
+          :file_shift => 2,
+          :rank_shift => -1
         },
         {
-          :file => (ascii_file_number - 2).chr,
-          :rank => @rank - 1
+          :file_shift => -2,
+          :rank_shift => -1
         }
       ]
 
-      moves.select do |move|
-        Chess::Board.on_board?(move[:file], move[:rank])
+      l_movements.each do |move|
+        next if !Chess::Board.on_board?(
+          file_shift(move[:file_shift]),
+          @rank + move[:rank_shift]
+        )
+
+        piece_at_location = board.piece_at_square(
+          :file => file_shift(move[:file_shift]),
+          :rank => @rank + move[:rank_shift]
+        )
+
+        moves.append(
+          {
+            :file => file_shift(move[:file_shift]),
+            :rank => @rank + move[:rank_shift]
+          }
+        ) unless piece_at_location && piece_at_location.team == @team
       end
+
+      moves
     end
   end
 end
