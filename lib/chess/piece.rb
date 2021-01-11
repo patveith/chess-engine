@@ -54,9 +54,7 @@ module Chess
     end
 
     def file_shift(shift_value)
-      return (@file.ord + shift_value).chr if Chess::Board.on_board?((@file.ord + shift_value).chr, @rank)
-
-      raise
+      (@file.ord + shift_value).chr
     end
   end
 end

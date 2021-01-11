@@ -147,8 +147,8 @@ RSpec.describe Chess::Piece do
     end
 
     context "when shifting off board" do
-      it "raises an error" do
-        expect { subject.file_shift(-2) }.to raise_error
+      it "returns a square not on the board" do
+        expect(Chess::Board.on_board?(subject.file_shift(-2), subject.rank)).to eq(false)
       end
     end
   end
