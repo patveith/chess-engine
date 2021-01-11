@@ -9,3 +9,4 @@ module Chess
     end
   end
 end
+

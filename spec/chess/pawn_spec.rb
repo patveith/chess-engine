@@ -12,7 +12,18 @@ RSpec.describe Chess::Pawn do
         )
       end
 
-      let(:available_moves) { [["a", 3], ["a", 4]] }
+      let(:available_moves) do
+        [
+          {
+            :file => "a",
+            :rank => 3
+          },
+          {
+            :file => "a",
+            :rank => 4
+          }
+        ]
+      end
 
       it "returns two possible moves" do
         expect(subject.available_moves).to match_array(available_moves)
@@ -29,7 +40,14 @@ RSpec.describe Chess::Pawn do
         )
       end
 
-      let(:available_moves) { [["a", 4]] }
+      let(:available_moves) do
+        [
+          {
+            :file => "a",
+            :rank => 4
+          }
+        ]
+      end
 
       it "returns one move" do
         subject.move_to(:file => "a", :rank => 3)
