@@ -11,24 +11,66 @@ RSpec.describe Chess::Rook do
       )
     end
 
-    let(:available_moves) {
+    let(:available_moves) do
       [
-        ["a", 2],
-        ["a", 3],
-        ["a", 4],
-        ["a", 5],
-        ["a", 6],
-        ["a", 7],
-        ["a", 8],
-        ["b", 1],
-        ["c", 1],
-        ["d", 1],
-        ["e", 1],
-        ["f", 1],
-        ["g", 1],
-        ["h", 1],
+        {
+          :file => "a",
+          :rank => 2
+        },
+        {
+          :file => "a",
+          :rank => 3
+        },
+        {
+          :file => "a",
+          :rank => 4
+        },
+        {
+          :file => "a",
+          :rank => 5
+        },
+        {
+          :file => "a",
+          :rank => 6
+        },
+        {
+          :file => "a",
+          :rank => 7
+        },
+        {
+          :file => "a",
+          :rank => 8
+        },
+        {
+          :file => "b",
+          :rank => 1
+        },
+        {
+          :file => "c",
+          :rank => 1
+        },
+        {
+          :file => "d",
+          :rank => 1
+        },
+        {
+          :file => "e",
+          :rank => 1
+        },
+        {
+          :file => "f",
+          :rank => 1
+        },
+        {
+          :file => "g",
+          :rank => 1
+        },
+        {
+          :file => "h",
+          :rank => 1
+        }
       ]
-    }
+    end
 
     it "returns 14 possible moves" do
       expect(subject.available_moves).to match_array(available_moves)

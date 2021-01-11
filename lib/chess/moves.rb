@@ -4,8 +4,18 @@ module Chess
       moves = []
 
       (1..max_distance).each do |i|
-        moves.append([@file, i + 1])
-        moves.append([(Chess::Board::CHAR_A_ASCII + i).chr, @rank])
+        moves.append(
+          {
+            :file => @file,
+            :rank => i + 1
+          }
+        )
+        moves.append(
+          {
+            :file => (Chess::Board::CHAR_A_ASCII + i).chr,
+            :rank => @rank
+          }
+        )
       end
 
       moves
