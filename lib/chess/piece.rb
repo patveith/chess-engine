@@ -52,5 +52,9 @@ module Chess
       raise unless Value::VALUES.key?(@type)
       @team == Team::WHITE ? Value::VALUES[@type] : -Value::VALUES[@type]
     end
+
+    def file_shift(shift_value)
+      (@file.ord + shift_value).chr
+    end
   end
 end
